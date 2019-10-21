@@ -109,7 +109,11 @@ let timeStop = 0;
  */
 
 function pointLabel(index) {
-  return index % 2 == 0 ? index / 2 + 1 : ABC[index / 2 - 0.5];
+  if (arrayOfPoints[0][0] == 853 || arrayOfPoints[0][0] == 473) {
+    return index + 1;
+  } else {
+    return index % 2 == 0 ? index / 2 + 1 : ABC[index / 2 - 0.5];
+  }
 }
 
 function shiftPoint(point) {
