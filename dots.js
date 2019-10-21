@@ -225,16 +225,16 @@ function exampleTest() {
           overlay.style.display = "block";
           startPanel.style.display = "none";
           togglePanel.innerHTML = `<h1>Great!</h1>
-          <h2>You passed this example in ${timeCompute()}</h2>
-        <h2>Now You're ready for the real test</h2>
+          <h2>You have passed the sample test in ${timeCompute()}.</h2>
+        <h2>Get ready for a real test!</h2>
         <button id="next-button">next</button>`;
           togglePanel.style.display = "block";
           document
             .getElementById("next-button")
             .addEventListener("click", () => {
               togglePanel.style.display = "none";
-              startPanel.innerHTML = `<h1>Let's test You</h1>
-            <h2>Mark the path through the correct circle as quickly as possible</h2>
+              startPanel.innerHTML = `<h1>Test A</h1>
+            <h2>Connect circles by following numbers in ascending order as quickly as you can.</h2>
             <button id="start-button">start!</button>`;
               startPanel.style.display = "block";
               document
@@ -296,8 +296,8 @@ function rightTest() {
               document
                 .getElementById("next-button")
                 .addEventListener("click", () => {
-                  startPanel.innerHTML = `<h1>Here's another example test</h1>
-              <h2>Try it</h2>
+                  startPanel.innerHTML = `<h1>A Sample for Test B</h1>
+              <h2>Connect circles following an ascending pattern of numbers and letters: 1-A-2-B-3-C...</h2>
               <button id="start-button">start!</button>`;
                   togglePanel.style.display = "none";
                   startPanel.style.display = "block";
@@ -351,7 +351,7 @@ function afterTestHeadline() {
   } else if (result < 21) {
     return "WOW!";
   } else if (result < 27) {
-    return "Great job!";
+    return "Good job!";
   } else if (result < 34) {
     return "Good";
   } else if (result < 41) {
@@ -366,8 +366,8 @@ function endOfTest() {
   startPanel.style.display = "none";
   overlay.style.display = "block";
   togglePanel.innerHTML = `<h1>${afterTestHeadline()}</h1>
-  <h2>You passed the test in ${timeCompute()}</h2>
-<h2 style="margin-top: 25 vh">That's it. Filling smart? Compare your score with others and rate our app!</h2>
+  <h2>You've passed the test in ${timeCompute()}.</h2>
+<h2 style="margin-top: 25 vh">That's it. Filling smart? Compare your score with others and rate the app!</h2>
 <button id="score-list">score list</button>
 <button id="rate-button">rate</button>`;
   togglePanel.style.display = "block";
