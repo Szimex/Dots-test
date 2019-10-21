@@ -355,9 +355,9 @@ function afterTestHeadline() {
   } else if (result < 34) {
     return "Good";
   } else if (result < 41) {
-    ("OK, You've done it");
+    return "OK, You've done it";
   } else if (result >= 41) {
-    ("finished");
+    return "Finished";
   }
 }
 
