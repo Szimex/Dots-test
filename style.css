@@ -1,0 +1,137 @@
+div {
+  background-color: rgb(220, 223, 226);
+  position: relative;
+  margin: auto;
+}
+span {
+  color: white;
+  text-orientation: sideways;
+  text-align: center;
+  font-size: 3.8vh;
+  width: 4.2vh;
+  height: 4.2vh;
+  padding: 1.7vh;
+  background-color: rgb(27, 86, 214);
+  border: rgb(105, 73, 73) 1px solid;
+  border-radius: 50%;
+  z-index: 1;
+}
+svg {
+  position: absolute;
+  overflow: visible;
+}
+line {
+  position: absolute;
+  display: none;
+}
+.current-match {
+  background-color: rgb(42, 165, 79);
+  transform: scale(1.1);
+  transition: transform 0.4s;
+}
+span:hover {
+  cursor: pointer;
+}
+.overlay {
+  position: fixed;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 2;
+}
+.toggle-panel,
+.start-panel {
+  color: white;
+  padding: 16vh;
+  text-align: center;
+  font-size: 4vh;
+  background-color: rgb(5, 5, 5);
+}
+.start-panel {
+  display: none;
+}
+.toggle-panel {
+  display: none;
+}
+button {
+  font-size: 5vh;
+  text-transform: uppercase;
+  padding: 3vh;
+  margin-top: 5vh;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  border: rgb(5, 5, 5) 1px solid;
+  letter-spacing: 0.7px;
+  font-weight: 600;
+}
+button:hover {
+  color: white;
+  border: gray 1px solid;
+  background-color: rgb(5, 5, 5);
+}
+button:active {
+  background-color: rgb(11, 11, 11);
+  border: white 1px solid;
+  text-shadow: 0 0 3px white;
+  text-shadow: 0 0 5px gray;
+}
+
+/*
+ * ----------------------------------------
+ * animation shake-horizontal
+ * ----------------------------------------
+ */
+
+@keyframes shake-horizontal {
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  15%,
+  45% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px);
+  }
+  30%,
+  60% {
+    -webkit-transform: translateX(5px);
+    transform: translateX(5px);
+  }
+  87% {
+    -webkit-transform: translateX(3px);
+    transform: translateX(3px);
+  }
+  73% {
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+}
+
+.shake-horizontal {
+  animation: shake-horizontal 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+
+/*
+ * ----------------------------------------
+ * puls point
+ * ----------------------------------------
+ */
+
+@keyframes shadow-pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.15);
+  }
+  100% {
+    box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+  }
+}
+.shadow-pulse {
+  animation: shadow-pulse 1s infinite;
+}
