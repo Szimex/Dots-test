@@ -101,7 +101,6 @@ let linesShift = 38;
 let clickedSpan = document.getElementsByTagName("span");
 let timeStart = 0;
 let timeStop = 0;
-
 /*
  * ----------------------------------------
  * drawing board
@@ -188,8 +187,8 @@ document.getElementById("start-panel").style.width = circleTestArea.style.width;
  * ----------------------------------------
  */
 
-document.querySelector("body").onload = () =>
-  (document.getElementById("toggle-panel").style.display = "block");
+document.querySelector("body").onload = () => console.log("load");
+document.getElementById("toggle-panel").style.display = "block";
 nextButton.addEventListener("click", () => {
   togglePanel.style.display = "none";
   startPanel.style.display = "block";
@@ -228,18 +227,17 @@ function exampleTest() {
         setTimeout(() => {
           overlay.style.display = "block";
           startPanel.style.display = "none";
-          togglePanel.innerHTML = `<h1>Great!</h1>
-          <h2>You have passed the sample test in ${timeCompute()}.</h2>
-        <h2>Get ready for a real test!</h2>
-        <button id="next-button">next</button>`;
+          passedExample();
           togglePanel.style.display = "block";
           document
             .getElementById("next-button")
             .addEventListener("click", () => {
               togglePanel.style.display = "none";
-              startPanel.innerHTML = `<h1>Test A</h1>
-            <h2>Connect circles by following numbers in ascending order as quickly as you can.</h2>
-            <button id="start-button">start!</button>`;
+              if (arrayOfPoints[0][0] == 853) {
+                startingTestA();
+              } else if (arrayOfPoints[0][0] == 850) {
+                startingTestB();
+              }
               startPanel.style.display = "block";
               document
                 .getElementById("start-button")
@@ -292,17 +290,12 @@ function rightTest() {
             if (arrayOfPoints[0][0] == 473) {
               overlay.style.display = "block";
               startPanel.style.display = "none";
-              togglePanel.innerHTML = `<h1>${afterTestHeadline()}</h1>
-            <h2>You passed the test in ${timeCompute()}</h2>
-          <h2>Are You curious for more?</h2>
-          <button id="next-button">next</button>`;
+              passedTestA();
               togglePanel.style.display = "block";
               document
                 .getElementById("next-button")
                 .addEventListener("click", () => {
-                  startPanel.innerHTML = `<h1>A Sample for Test B</h1>
-              <h2>Connect circles following an ascending pattern of numbers and letters: 1-A-2-B-3-C...</h2>
-              <button id="start-button">start!</button>`;
+                  startingSampleB();
                   togglePanel.style.display = "none";
                   startPanel.style.display = "block";
                   document
@@ -366,13 +359,49 @@ function afterTestHeadline() {
 }
 
 function endOfTest() {
-  console.log("done");
   startPanel.style.display = "none";
+  endTestB();
   overlay.style.display = "block";
-  togglePanel.innerHTML = `<h1>${afterTestHeadline()}</h1>
+  togglePanel.style.display = "block";
+}
+
+/*
+ * ----------------------------------------
+ * message fuctions
+ * ----------------------------------------
+ */
+
+function passedExample() {
+  return (togglePanel.innerHTML = `<h1>Great!</h1>
+  <h2>You have passed the sample test in ${timeCompute()}.</h2>
+<h2>Get ready for a real test!</h2>
+<button id="next-button">next</button>`);
+}
+function startingTestA() {
+  return (startPanel.innerHTML = `<h1>Test A</h1>
+  <h2>Connect circles by following numbers in ascending order as quickly as you can.</h2>
+  <button id="start-button">start!</button>`);
+}
+function passedTestA() {
+  return (togglePanel.innerHTML = `<h1>${afterTestHeadline()}</h1>
+  <h2>You passed the test in ${timeCompute()}</h2>
+<h2>Are You curious for more?</h2>
+<button id="next-button">next</button>`);
+}
+function startingSampleB() {
+  return (startPanel.innerHTML = `<h1>A Sample for Test B</h1>
+  <h2>Connect circles following an ascending pattern of numbers and letters: 1-A-2-B-3-C...</h2>
+  <button id="start-button">start!</button>`);
+}
+function startingTestB() {
+  return (startPanel.innerHTML = `<h1>Test B</h1>
+  <h2>Connect circles by following an ascending pattern of numbers and letters as quickly as you can.</h2>
+  <button id="start-button">start!</button>`);
+}
+function endTestB() {
+  return (togglePanel.innerHTML = `<h1>${afterTestHeadline()}</h1>
   <h2>You've passed the test in ${timeCompute()}.</h2>
 <h2 style="margin-top: 25 vh">That's it. Filling smart? Compare your score with others and rate the app!</h2>
 <button id="score-list">score list</button>
-<button id="rate-button">rate</button>`;
-  togglePanel.style.display = "block";
+<button id="rate-button">rate</button>`);
 }
