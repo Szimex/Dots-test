@@ -12,7 +12,7 @@ let TEST_A_SAMPLE = [
   [1233, 823],
   [334, 751],
   [159, 405],
-  [610, 386]
+  [610, 386],
 ];
 
 let TEST_A = [
@@ -40,7 +40,7 @@ let TEST_A = [
   [688, 152],
   [713, 868],
   [628, 495],
-  [603, 893]
+  [603, 893],
 ];
 
 const TEST_B_SAMPLE = [
@@ -51,7 +51,7 @@ const TEST_B_SAMPLE = [
   [1230, 812],
   [339, 736],
   [158, 397],
-  [613, 338]
+  [613, 338],
 ];
 
 const TEST_B = [
@@ -78,27 +78,27 @@ const TEST_B = [
   [720, 861],
   [58, 884],
   [45, 462],
-  [132, 702]
+  [132, 702],
 ];
 
 const testType = 0;
 const pointsShifting = 0;
-const marginMax = 130;
-const ABC = "abcdefghijklmnopqrstuvwxyz".toUpperCase().split("");
-const circleTestArea = document.getElementById("circle-test-area");
-const overlay = document.getElementById("overlay");
-const togglePanel = document.getElementById("toggle-panel");
-const startPanel = document.getElementById("start-panel");
-const nextButton = document.getElementById("next-button");
-const startButton = document.getElementById("start-button");
+const marginMax = 160;
+const ABC = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('');
+const circleTestArea = document.getElementById('circle-test-area');
+const overlay = document.getElementById('overlay');
+const togglePanel = document.getElementById('toggle-panel');
+const startPanel = document.getElementById('start-panel');
+const nextButton = document.getElementById('next-button');
+const startButton = document.getElementById('start-button');
 
 let arrayOfPoints = TEST_A_SAMPLE;
-let circleTestAreaStyle = document.getElementById("circle-test-area").style;
-let windowHeight = window.innerHeight;
-let divWidth = circleTestArea.offsetWidth;
+const circleTestAreaStyle = document.getElementById('circle-test-area').style;
+const windowHeight = window.innerHeight;
+const divWidth = circleTestArea.offsetWidth;
 let proportion = 0;
-let linesShift = 38;
-let clickedSpan = document.getElementsByTagName("span");
+const linesShift = 38;
+const clickedSpan = document.getElementsByTagName('span');
 let timeStart = 0;
 let timeStop = 0;
 /*
@@ -110,9 +110,8 @@ let timeStop = 0;
 function pointLabel(index) {
   if (arrayOfPoints[0][0] == 853 || arrayOfPoints[0][0] == 473) {
     return index + 1;
-  } else {
-    return index % 2 == 0 ? index / 2 + 1 : ABC[index / 2 - 0.5];
   }
+  return index % 2 == 0 ? index / 2 + 1 : ABC[index / 2 - 0.5];
 }
 
 function shiftPoint(point) {
@@ -142,16 +141,16 @@ function xy(arr) {
     proportion = windowHeight / yMax;
   }
 
-  circleTestAreaStyle.height = Math.round(yMax * proportion) + "px";
-  circleTestAreaStyle.width = Math.round(xMax * proportion) + "px";
+  circleTestAreaStyle.height = Math.round(yMax * proportion) + 'px';
+  circleTestAreaStyle.width = Math.round(xMax * proportion) + 'px';
 }
 
 function writeCircles(arr) {
   arr.forEach((point, i) => {
     circleTestArea.innerHTML += `<span id="${i}" class="" style="position: absolute; top:${Math.round(
-      point[1] * proportion
+      point[1] * proportion,
     )}px; left: ${Math.round(point[0] * proportion)}px">${pointLabel(
-      i
+      i,
     )}</span>`;
   });
 }
@@ -159,7 +158,7 @@ function writeCircles(arr) {
 function drawingLines(arr) {
   for (let i = 1; i < arr.length; i++) {
     circleTestArea.innerHTML += `<svg><line class=""  id="l${i}"x1="${Math.round(
-      arr[i - 1][0] * proportion
+      arr[i - 1][0] * proportion,
     ) +
       linesShift * proportion}px" y1="${Math.round(arr[i - 1][1] * proportion) +
       linesShift * proportion}px" x2="${Math.round(arr[i][0] * proportion) +
@@ -173,13 +172,13 @@ xy(arrayOfPoints);
 writeCircles(arrayOfPoints);
 drawingLines(arrayOfPoints);
 
-document.getElementById("toggle-panel").style.height =
+document.getElementById('toggle-panel').style.height =
   circleTestArea.style.height;
-document.getElementById("toggle-panel").style.width =
+document.getElementById('toggle-panel').style.width =
   circleTestArea.style.width;
-document.getElementById("start-panel").style.height =
+document.getElementById('start-panel').style.height =
   circleTestArea.style.height;
-document.getElementById("start-panel").style.width = circleTestArea.style.width;
+document.getElementById('start-panel').style.width = circleTestArea.style.width;
 
 /*
  * ----------------------------------------
@@ -187,15 +186,15 @@ document.getElementById("start-panel").style.width = circleTestArea.style.width;
  * ----------------------------------------
  */
 
-document.querySelector("body").onload = () => console.log("load");
-document.getElementById("toggle-panel").style.display = "block";
-nextButton.addEventListener("click", () => {
-  togglePanel.style.display = "none";
-  startPanel.style.display = "block";
+document.querySelector('body').onload = () => console.log('load');
+document.getElementById('toggle-panel').style.display = 'block';
+nextButton.addEventListener('click', () => {
+  togglePanel.style.display = 'none';
+  startPanel.style.display = 'block';
 });
-startButton.addEventListener("click", () => startTest());
+startButton.addEventListener('click', () => startTest());
 function startTest() {
-  document.getElementById("overlay").style.display = "none";
+  document.getElementById('overlay').style.display = 'none';
   if (arrayOfPoints.length == 8) {
     exampleTest();
   } else if (arrayOfPoints.length > 8) {
@@ -205,104 +204,97 @@ function startTest() {
 
 function exampleTest() {
   timeStart = new Date().getTime();
-  console.log("run sample test");
   let counter = 0;
 
-  document.getElementById(0).classList.add("shadow-pulse");
+  document.getElementById(0).classList.add('shadow-pulse');
   for (let i = 0; i < arrayOfPoints.length; i++) {
-    document.getElementById(i).addEventListener("click", () => {
+    document.getElementById(i).addEventListener('click', () => {
       if (i == counter && counter + 1 != arrayOfPoints.length) {
-        document.getElementById(i).classList.remove("shadow-pulse");
-        document.getElementById(i).classList.add("current-match");
-        document.getElementById(i + 1).classList.add("shadow-pulse");
+        document.getElementById(i).classList.remove('shadow-pulse');
+        document.getElementById(i).classList.add('current-match');
+        document.getElementById(i + 1).classList.add('shadow-pulse');
         if (i > 0) {
-          document.getElementById("l" + i).style.display = "block";
+          document.getElementById('l' + i).style.display = 'block';
         }
         counter++;
       } else if (counter + 1 == arrayOfPoints.length) {
         timeStop = new Date().getTime();
-        document.getElementById(i).classList.remove("shadow-pulse");
-        document.getElementById(i).classList.add("current-match");
-        document.getElementById("l" + i).style.display = "block";
+        document.getElementById(i).classList.remove('shadow-pulse');
+        document.getElementById(i).classList.add('current-match');
+        document.getElementById('l' + i).style.display = 'block';
         setTimeout(() => {
-          overlay.style.display = "block";
-          startPanel.style.display = "none";
-          passedExample();
-          togglePanel.style.display = "block";
+          overlay.style.display = 'block';
+          startPanel.style.display = 'none';
+          togglePanel.style.display = 'none';
+          if (arrayOfPoints[0][0] == 853) {
+            startingTestA();
+          } else if (arrayOfPoints[0][0] == 850) {
+            startingTestB();
+          }
+          startPanel.style.display = 'block';
           document
-            .getElementById("next-button")
-            .addEventListener("click", () => {
-              togglePanel.style.display = "none";
+            .getElementById('start-button')
+            .addEventListener('click', () => {
               if (arrayOfPoints[0][0] == 853) {
-                startingTestA();
+                arrayOfPoints = TEST_A;
               } else if (arrayOfPoints[0][0] == 850) {
-                startingTestB();
+                arrayOfPoints = TEST_B;
               }
-              startPanel.style.display = "block";
-              document
-                .getElementById("start-button")
-                .addEventListener("click", () => {
-                  if (arrayOfPoints[0][0] == 853) {
-                    arrayOfPoints = TEST_A;
-                  } else if (arrayOfPoints[0][0] == 850) {
-                    arrayOfPoints = TEST_B;
-                  }
-                  circleTestArea.innerHTML = "";
-                  xy(arrayOfPoints);
-                  writeCircles(arrayOfPoints);
-                  drawingLines(arrayOfPoints);
-                  startTest();
-                });
+              circleTestArea.innerHTML = '';
+              xy(arrayOfPoints);
+              writeCircles(arrayOfPoints);
+              drawingLines(arrayOfPoints);
+              startTest();
             });
         }, 500);
       } else {
-        document.getElementById(i).classList.add("shake-horizontal");
+        document.getElementById(i).classList.add('shake-horizontal');
         setTimeout(
-          () => document.getElementById(i).classList.remove("shake-horizontal"),
-          500
+          () => document.getElementById(i).classList.remove('shake-horizontal'),
+          500,
         );
       }
     });
   }
 
   if (counter == arrayOfPoints.length) {
-    console.log("end");
+    console.log('end');
   }
 }
 function rightTest() {
   timeStart = new Date().getTime();
-  console.log("run test");
+  console.log('run test');
   let counter = 0;
 
   for (let i = 0; i < arrayOfPoints.length; i++) {
-    document.getElementById(i).addEventListener("click", () => {
+    document.getElementById(i).addEventListener('click', () => {
       if (i == counter) {
-        document.getElementById(i).classList.add("current-match");
+        document.getElementById(i).classList.add('current-match');
         if (i > 0) {
-          document.getElementById("l" + i).style.display = "block";
+          document.getElementById('l' + i).style.display = 'block';
         }
         counter++;
         if (counter == arrayOfPoints.length) {
           timeStop = new Date().getTime();
-          console.log("end right test");
+          console.log('end right test');
           setTimeout(() => {
-            //checking if its turn to another test or to end this app.
+            // checking if its turn to another test or to end this app.
             if (arrayOfPoints[0][0] == 473) {
-              overlay.style.display = "block";
-              startPanel.style.display = "none";
+              overlay.style.display = 'block';
+              startPanel.style.display = 'none';
               passedTestA();
-              togglePanel.style.display = "block";
+              togglePanel.style.display = 'block';
               document
-                .getElementById("next-button")
-                .addEventListener("click", () => {
+                .getElementById('next-button')
+                .addEventListener('click', () => {
                   startingSampleB();
-                  togglePanel.style.display = "none";
-                  startPanel.style.display = "block";
+                  togglePanel.style.display = 'none';
+                  startPanel.style.display = 'block';
                   document
-                    .getElementById("start-button")
-                    .addEventListener("click", () => {
+                    .getElementById('start-button')
+                    .addEventListener('click', () => {
                       arrayOfPoints = TEST_B_SAMPLE;
-                      circleTestArea.innerHTML = "";
+                      circleTestArea.innerHTML = '';
                       xy(arrayOfPoints);
                       writeCircles(arrayOfPoints);
                       drawingLines(arrayOfPoints);
@@ -315,10 +307,10 @@ function rightTest() {
           }, 500);
         }
       } else {
-        document.getElementById(i).classList.add("shake-horizontal");
+        document.getElementById(i).classList.add('shake-horizontal');
         setTimeout(
-          () => document.getElementById(i).classList.remove("shake-horizontal"),
-          500
+          () => document.getElementById(i).classList.remove('shake-horizontal'),
+          500,
         );
       }
     });
@@ -326,82 +318,60 @@ function rightTest() {
 }
 
 function timeCompute() {
-  let result = Math.round((timeStop - timeStart) / 1000);
+  const result = Math.round((timeStop - timeStart) / 1000);
   if (result < 60) {
-    return result + " seconds";
-  } else if (result < 120) {
-    return "one minute and " + (result - 60) + " seconds";
-  } else if (result >= 120) {
+    return result + ' seconds';
+  }
+  if (result < 120) {
+    return 'one minute and ' + (result - 60) + ' seconds';
+  }
+  if (result >= 120) {
     return (
       Math.floor(result / 60) +
-      " minutes and " +
+      ' minutes and ' +
       (result - Math.floor(result / 60) * 60) +
-      " seconds"
+      ' seconds'
     );
   }
 }
 
-function afterTestHeadline() {
-  let result = Math.round((timeStop - timeStart) / 1000);
-  if (result < 15) {
-    return "OUTSTANDING!!!";
-  } else if (result < 21) {
-    return "WOW!";
-  } else if (result < 27) {
-    return "Good job!";
-  } else if (result < 34) {
-    return "Good";
-  } else if (result < 41) {
-    return "OK, You've done it";
-  } else if (result >= 41) {
-    return "Finished";
-  }
-}
-
 function endOfTest() {
-  startPanel.style.display = "none";
+  startPanel.style.display = 'none';
   endTestB();
-  overlay.style.display = "block";
-  togglePanel.style.display = "block";
+  overlay.style.display = 'block';
+  togglePanel.style.display = 'block';
 }
 
 /*
  * ----------------------------------------
- * message fuctions
+ * message fuctionsMN
  * ----------------------------------------
  */
 
-function passedExample() {
-  return (togglePanel.innerHTML = `<h1>Great!</h1>
-  <h2>You have passed the sample test in ${timeCompute()}.</h2>
-<h2>Get ready for a real test!</h2>
-<button id="next-button">next</button>`);
-}
 function startingTestA() {
-  return (startPanel.innerHTML = `<h1>Test A</h1>
-  <h2>Connect circles by following numbers in ascending order as quickly as you can.</h2>
-  <button id="start-button">start!</button>`);
+  return (startPanel.innerHTML = `<h2>Part A Main Test</h2>
+  <h2>You will now complete the Main Test for Part A which consists of 25 circles. Using your mouse your task is to start  by clicking number one and then find and click on the circle that has the number 2. You will continue to connect the circles in numerical order until they reach number 25.</h2>
+  <button id="start-button">start test</button>`);
 }
 function passedTestA() {
-  return (togglePanel.innerHTML = `<h1>${afterTestHeadline()}</h1>
+  return (togglePanel.innerHTML = `<h2>Test completed</h2>
   <h2>You passed the test in ${timeCompute()}</h2>
-<h2>Are You curious for more?</h2>
 <button id="next-button">next</button>`);
 }
 function startingSampleB() {
-  return (startPanel.innerHTML = `<h1>A Sample for Test B</h1>
-  <h2>Connect circles following an ascending pattern of numbers and letters: 1-A-2-B-3-C...</h2>
-  <button id="start-button">start!</button>`);
+  return (startPanel.innerHTML = `<h2>Part B</h2>
+  <h2>This is the Sample Test</h2>
+  <h2>Using you mouse and clicking on the circles your task will be to connect the circles. However, rather than all of the circles containing numbers, half of the circles have the numbers in them and the other half contain the letters. You  will alternate the numbers and letters like this: 1-A-2-B-3-C  until the sample test is complete</h2>
+  <button id="start-button">start sample test</button>`);
 }
 function startingTestB() {
-  return (startPanel.innerHTML = `<h1>Test B</h1>
-  <h2>Connect circles by following an ascending pattern of numbers and letters as quickly as you can.</h2>
-  <button id="start-button">start!</button>`);
+  return (startPanel.innerHTML = `<h2>Part B Main Test</h2>
+  <h2>You will now complete the Main Test for Part B which consists of numbers and letters. Using your mouse and clicking on the circles your task will be to connect the circles from one circle to the next in ascending order; however, you must alternate the circles with numbers in them (1-13) with circles with letters in them (A-L). In other words, you will need  to connect the circles in order like this: 1-A-2-B-3-C-4-D-5-E and so on.</h2>
+  <button id="start-button">start test</button>`);
 }
 function endTestB() {
-  return (togglePanel.innerHTML = `<h1>${afterTestHeadline()}</h1>
+  return (togglePanel.innerHTML = `<h2>Test completed</h2></h2>
   <h2>You've passed the test in ${timeCompute()}.</h2>
-<h2 style="margin-top: 25 vh">That's it. Filling smart? Compare your score with others and rate the app!</h2>
-<button id="score-list">score list</button>
-<button id="rate-button">rate</button>`);
+<h2></h2>
+<button id="next-button">next</button>`);
 }

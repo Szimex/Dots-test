@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import { hot } from 'react-hot-loader/root';
-import HelloWorld from './components/hello-world';
+import Overlay from './components/overlay/Overlay.jsx';
+import Board from './components/board/Board.jsx';
 
-function Example() {
-  // Declare a new state variable, which we'll call "count"
-  const [number, setNumber] = useState(2);
+function Test() {
+  // if (stage == WELCOME)
+
+  // if (state[stage] == 'welcome')
+
+  // if (stage == 0)
+
+  const [stage, setStage] = React.useState(0);
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <HelloWorld number={number} title="Hello from React webpack" />
-      <button type="button" onClick={() => setNumber(number + 1)}>
-        Click me
-      </button>
+    <div>
+      <Overlay stage={stage} setStage={setStage} />
+      <Board />
     </div>
   );
 }
 
-export default hot(Example);
+export default hot(Test);
